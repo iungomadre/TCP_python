@@ -3,7 +3,7 @@ import argparse
 
 
 # UDP server. Change the functionality by modifying self._utilize_data()
-class UDPServer:
+class TCPServer:
     def __init__(self, host: str, port: int, buffer_size: int):
         self._host = host
         self._port = port
@@ -34,13 +34,13 @@ class UDPServer:
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser("Start UDP server receiving data from senders")
+    parser = argparse.ArgumentParser("Start TCP server receiving data from senders")
     parser.add_argument("host", type=str)
     parser.add_argument("port", type=int)
     parser.add_argument("buffer_size", type=int)
     args = parser.parse_args()
 
-    with UDPServer(args.host, args.port, args.buffer_size) as serv:
+    with TCPServer(args.host, args.port, args.buffer_size) as serv:
         if __debug__:
             print(f"TCP server has successfully started at {args.host}:{args.port}")
             print("receiving...")

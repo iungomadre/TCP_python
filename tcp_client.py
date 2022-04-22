@@ -4,7 +4,7 @@ import socket
 DATA = b"abcdefghijklmnoprstuwxyz"
 
 
-class UDPClient:
+class TCPClient:
     def __init__(self, host: str, port: int):
         self._host = host
         self._port = port
@@ -27,7 +27,7 @@ if __name__ == '__main__':
     parser.add_argument("port", type=int, help="receiver's listening port")
     args = parser.parse_args()
 
-    with UDPClient(args.host, args.port) as client:
+    with TCPClient(args.host, args.port) as client:
         if __debug__:
             print(f"Sending data to {args.host}:{args.port}")
         client.send(DATA)
